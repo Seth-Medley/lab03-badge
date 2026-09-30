@@ -6,6 +6,8 @@
 * Description: Builds a student badge from a name, two random assignments,
 * and the walking distance to a first class.
 */
+
+// Part 1: The Name
 Console.Write($"What is your name? ");
 string? fullName = Console.ReadLine();
 fullName = fullName.Trim();
@@ -16,10 +18,16 @@ string username = firstName[0] + lastName;
 char firstNameInitial = firstName[0];
 char lastNameInitial = lastName[0];
 
-
 Console.WriteLine($"Name: {fullName.ToUpper()}");
 Console.WriteLine($"Username: {username.ToLower()}");
-// Initials
 Console.WriteLine($"Initials: {firstNameInitial}.{lastNameInitial}.");
-// Number of Letters in last name. 
 Console.WriteLine($"Letters in last name: {lastName.Length}");
+Console.WriteLine();
+
+// Part 2: The Numbers
+Random rng = new Random();
+
+int studentID = rng.Next(10000, 999999);
+int lockerNumber = rng.Next(1, 500);
+Console.WriteLine($"Student ID: {studentID}");
+Console.WriteLine($"Locker {lockerNumber}");
