@@ -6,7 +6,7 @@
 * Description: Builds a student badge from a name, two random assignments,
 * and the walking distance to a first class.
 */
-
+Random rng = new Random();
 // Part 1: The Name
 Console.Write($"What is your name? ");
 string? fullName = Console.ReadLine();
@@ -15,19 +15,41 @@ int spacePosition = fullName.IndexOf(" ");
 string firstName = fullName.Substring(0, spacePosition);
 string lastName = fullName.Substring(spacePosition + 1);
 string username = firstName[0] + lastName;
-char firstNameInitial = firstName[0];
-char lastNameInitial = lastName[0];
+string firstNameInitial = Convert.ToString(firstName[0]);
+string lastNameInitial = Convert.ToString(lastName[0]);
 
 Console.WriteLine($"Name: {fullName.ToUpper()}");
 Console.WriteLine($"Username: {username.ToLower()}");
-Console.WriteLine($"Initials: {firstNameInitial}.{lastNameInitial}.");
+Console.WriteLine($"Initials: {firstNameInitial.ToUpper()}.{lastNameInitial.ToUpper()}.");
 Console.WriteLine($"Letters in last name: {lastName.Length}");
 Console.WriteLine();
 
 // Part 2: The Numbers
-Random rng = new Random();
-
 int studentID = rng.Next(10000, 999999);
 int lockerNumber = rng.Next(1, 500);
 Console.WriteLine($"Student ID: {studentID}");
-Console.WriteLine($"Locker {lockerNumber}");
+Console.WriteLine($"Locker: {lockerNumber}");
+Console.WriteLine();
+
+// Part 3: The Walk
+Console.Write("Dorm x: ");
+int dormX = Convert.ToInt16(Console.ReadLine());
+Console.Write("Dorm y: ");
+int dormY = Convert.ToInt16(Console.ReadLine());
+// Class X
+Console.Write("Class x: ");
+int classroomX = Convert.ToInt16(Console.ReadLine());
+// Class Y
+Console.Write("Class y:  ");
+int classroomY = Convert.ToInt16(Console.ReadLine());
+// Speed
+Console.Write("Walking speed in feet per second: ");
+string walkingSpeed = Convert.ToString(Console.ReadLine());
+
+double distance = Math.Sqrt( Math.Pow(classroomX - dormX, 2) + Math.Pow(classroomY - dormY, 2));
+Console.WriteLine($"Distance {Math.Round(distance, 1)} feet");
+
+int walkMinutes = (int)distance / 60;
+int walkSeconds = (int)distance % 60;
+
+Console.Write($"Walk time: {walkMinutes} minutes and {walkSeconds} seconds ");
