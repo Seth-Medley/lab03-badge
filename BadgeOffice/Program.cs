@@ -25,8 +25,8 @@ Console.WriteLine($"Letters in last name: {lastName.Length}");
 Console.WriteLine();
 
 // Part 2: The Numbers
-int studentID = rng.Next(10000, 999999);
-int lockerNumber = rng.Next(1, 500);
+int studentID = rng.Next(10000, 1000000);
+int lockerNumber = rng.Next(1, 501);
 Console.WriteLine($"Student ID: {studentID}");
 Console.WriteLine($"Locker: {lockerNumber}");
 Console.WriteLine();
@@ -44,12 +44,14 @@ Console.Write("Class y:  ");
 int classroomY = Convert.ToInt16(Console.ReadLine());
 // Speed
 Console.Write("Walking speed in feet per second: ");
-string walkingSpeed = Convert.ToString(Console.ReadLine());
+double walkingSpeed = Convert.ToDouble(Console.ReadLine());
 
 double distance = Math.Sqrt( Math.Pow(classroomX - dormX, 2) + Math.Pow(classroomY - dormY, 2));
-Console.WriteLine($"Distance {Math.Round(distance, 1)} feet");
+Console.WriteLine($"Distance: {Math.Round(distance, 1)} feet");
 
-int walkMinutes = (int)distance / 60;
-int walkSeconds = (int)distance % 60;
+double totalSecondsDouble = distance / walkingSpeed;
+int totalSeconds = (int)totalSecondsDouble;
 
+int walkMinutes = totalSeconds / 60;
+int walkSeconds = totalSeconds % 60;
 Console.Write($"Walk time: {walkMinutes} minutes and {walkSeconds} seconds ");
