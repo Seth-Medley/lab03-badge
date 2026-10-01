@@ -13,7 +13,9 @@ Random rng = new Random();
 /// ////////////////////////////////////////////////////////////////
 Console.Write($"Full name: ");
 string? fullName = Console.ReadLine();
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
 fullName = fullName.Trim();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 int spacePosition = fullName.IndexOf(" ");
 string firstName = fullName.Substring(0, spacePosition);
 string lastName = fullName.Substring(spacePosition + 1);
